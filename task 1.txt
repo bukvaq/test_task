@@ -1,0 +1,13 @@
+Запрос, позволяющий вывести самую популярную категорию товаров:
+
+SELECT goods_type_name, SUM(total) AS popularity 
+FROM 
+orders JOIN 
+goods 
+ON orders.goods_id = goods.goods_id 
+JOIN 
+goods_type 
+ON goods_type.goods_type_id = goods.goods_type_id
+GROUP BY goods_type_name
+ORDER BY popularity DESC
+LIMIT 1
